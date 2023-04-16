@@ -1,9 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from base.models import Item
 
 def home(request):
-    return render(request, "index.html")
+    print("-------------------------------------------")
+    menu_items = Item.objects.all()
+    context = {"items":menu_items}
+    return render(request, "index.html", context)
 
 def menu(request):
     return render(request, "menu.html")
