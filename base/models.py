@@ -13,3 +13,23 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 # date = auto_now_add =True
+from django.db import models
+
+class Blog(models.Model):
+    main_image = models.CharField(max_length=255)
+    other_images = models.TextField()
+    date = models.DateField(auto_now_add=True)
+    title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255)
+    body = models.TextField()
+    blogId = models.IntegerField()
+    author = models.CharField(max_length=255)
+    def __str__(self):
+        return self.title
+class Flaticon(models.Model):
+    icon= models.CharField(max_length=255)
+    title= models.CharField(max_length=255)
+    description= models.TextField()
+    type = models.CharField(max_length=255)
+    def __str__(self):
+        return self.type
