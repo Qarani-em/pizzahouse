@@ -14,7 +14,6 @@ class Item(models.Model):
         return self.name
 # date = auto_now_add =True
 from django.db import models
-
 class Blog(models.Model):
     main_image = models.CharField(max_length=255)
     other_images = models.TextField()
@@ -33,3 +32,10 @@ class Flaticon(models.Model):
     type = models.CharField(max_length=255)
     def __str__(self):
         return self.type
+class Chef(models.Model):
+    image = models.CharField(max_length=255)
+    name= models.CharField(max_length=255)
+    position= models.CharField(max_length=255)
+    description= models.TextField()
+    def __str__(self):
+        return self.name

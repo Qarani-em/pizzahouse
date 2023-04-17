@@ -1,18 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from base.models import Blog,Flaticon,Item
+from base.models import Blog,Flaticon,Item,Chef
 
 def home(request):
-    print("-------------------------------------------")
     menu_items = Item.objects.all()
     blogs = Blog.objects.all()
     flaticon = Flaticon.objects.all()
-
     context = {
         "items":menu_items,
         "blogs":blogs,
         "flaticons":flaticon, 
-        # "stats":flaticon_stats
         }
 
     return render(request, "index.html", context)
@@ -25,7 +22,10 @@ def services(request):
 def blog(request):
     return render(request, "blog.html")
 def about(request):
-    return render(request, "about.html")
+    chef = Chef.objects.all()
+    flaticon = Flaticon.objects.all()
+    context = {"chefs":chef, "flaticons":flaticon}
+    return render(request, "about.html", context)
 def contact(request):
     return render(request, "contact.html")
 
